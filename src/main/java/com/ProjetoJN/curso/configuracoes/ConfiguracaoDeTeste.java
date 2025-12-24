@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.ProjetoJN.curso.entities.Categoria;
 import com.ProjetoJN.curso.entities.Pedido;
+import com.ProjetoJN.curso.entities.Produto;
 import com.ProjetoJN.curso.entities.Usuario;
 import com.ProjetoJN.curso.entities.enums.StatusPedido;
 import com.ProjetoJN.curso.repositorios.RepositorioCategoria;
 import com.ProjetoJN.curso.repositorios.RepositorioPedido;
+import com.ProjetoJN.curso.repositorios.RepositorioProduto;
 import com.ProjetoJN.curso.repositorios.RepositorioUsuario;
 
 @Configuration
@@ -29,6 +31,9 @@ public class ConfiguracaoDeTeste implements CommandLineRunner {
 	@Autowired
 	private RepositorioCategoria repositorioCategoria;
 
+	@Autowired
+	private RepositorioProduto repositorioProduto;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		
@@ -36,7 +41,14 @@ public class ConfiguracaoDeTeste implements CommandLineRunner {
 		Categoria c2 = new Categoria(null, "Livros");
 		Categoria c3 = new Categoria(null, "Computadores");
 		
+		Produto P1 = new Produto(null, "O senhor dos anéis", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+		Produto P2 = new Produto(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+		Produto P3 = new Produto(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+		Produto P4 = new Produto(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+		Produto P5 = new Produto(null, "Trilhos para Leigos", "Cras fringilla convallis sem vel faucibus.", 100.99, ""); 
+
 		repositorioCategoria.saveAll(Arrays.asList(c1, c2, c3));
+		repositorioProduto.saveAll(Arrays.asList(P1, P2, P3, P4, P5));
 		
 		Usuario u1 = new Usuario(null, "Joao Neto", "joaoneto@gmail.com", "999999999", "123456");
 		Usuario u2 = new Usuario(null, "Joao Victor", "joaovictor@gmail.com", "888888888", "654321");
