@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.ProjetoJN.curso.entities.Categoria;
 import com.ProjetoJN.curso.entities.Pedido;
 import com.ProjetoJN.curso.entities.Usuario;
 import com.ProjetoJN.curso.entities.enums.StatusPedido;
+import com.ProjetoJN.curso.repositorios.RepositorioCategoria;
 import com.ProjetoJN.curso.repositorios.RepositorioPedido;
 import com.ProjetoJN.curso.repositorios.RepositorioUsuario;
 
@@ -23,9 +25,18 @@ public class ConfiguracaoDeTeste implements CommandLineRunner {
 	
 	@Autowired
 	private RepositorioPedido repositorioPedido;
+	
+	@Autowired
+	private RepositorioCategoria repositorioCategoria;
 
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Categoria c1 = new Categoria(null, "Eletronicos");
+		Categoria c2 = new Categoria(null, "Livros");
+		Categoria c3 = new Categoria(null, "Computadores");
+		
+		repositorioCategoria.saveAll(Arrays.asList(c1, c2, c3));
 		
 		Usuario u1 = new Usuario(null, "Joao Neto", "joaoneto@gmail.com", "999999999", "123456");
 		Usuario u2 = new Usuario(null, "Joao Victor", "joaovictor@gmail.com", "888888888", "654321");
