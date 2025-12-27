@@ -9,11 +9,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
 import com.ProjetoJN.curso.entities.Categoria;
+import com.ProjetoJN.curso.entities.ItemDoPedido;
 import com.ProjetoJN.curso.entities.Pedido;
 import com.ProjetoJN.curso.entities.Produto;
 import com.ProjetoJN.curso.entities.Usuario;
 import com.ProjetoJN.curso.entities.enums.StatusPedido;
 import com.ProjetoJN.curso.repositorios.RepositorioCategoria;
+import com.ProjetoJN.curso.repositorios.RepositorioItemDoPedido;
 import com.ProjetoJN.curso.repositorios.RepositorioPedido;
 import com.ProjetoJN.curso.repositorios.RepositorioProduto;
 import com.ProjetoJN.curso.repositorios.RepositorioUsuario;
@@ -33,6 +35,9 @@ public class ConfiguracaoDeTeste implements CommandLineRunner {
 
 	@Autowired
 	private RepositorioProduto repositorioProduto;
+	
+	@Autowired
+	private RepositorioItemDoPedido repositorioItemDoPedido;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -68,6 +73,13 @@ public class ConfiguracaoDeTeste implements CommandLineRunner {
 		
 		repositorioUsuario.saveAll(Arrays.asList(u1, u2));
 		repositorioPedido.saveAll(Arrays.asList(p1, p2, p3));
+		
+		ItemDoPedido item1 = new ItemDoPedido(p1, P1, 2, P1.getPreco());
+		ItemDoPedido item2 = new ItemDoPedido(p1, P3, 1, P4.getPreco());
+		ItemDoPedido item3 = new ItemDoPedido(p2, P3, 2, P1.getPreco());
+		ItemDoPedido item4 = new ItemDoPedido(p3, P5, 2, P5.getPreco());
+		
+		repositorioItemDoPedido.saveAll(Arrays.asList(item1, item2, item3, item4));
 	}
 
 }

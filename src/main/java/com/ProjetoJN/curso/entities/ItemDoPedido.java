@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import com.ProjetoJN.curso.entities.pk.ItemDoPedidoPK;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
@@ -11,12 +13,13 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_item_pedido")
+@JsonPropertyOrder({"quantidade", "preco", "id"})
 public class ItemDoPedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private ItemDoPedidoPK id;
+	private ItemDoPedidoPK id = new ItemDoPedidoPK();
 	
 	private Integer quantidade;
 	private Double preco;
@@ -33,6 +36,7 @@ public class ItemDoPedido implements Serializable {
 		this.preco = preco;
 	}
 	
+	@JsonIgnore
 	public Pedido getPedido() {
 		
 		return id.getPedido();
