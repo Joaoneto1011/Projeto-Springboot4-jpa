@@ -9,15 +9,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "tb_produto")
 public class Produto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -25,12 +27,14 @@ public class Produto implements Serializable {
 	private String descricao;
 	private Double preco;
 	private String imgUrl;
+
+	@ManyToMany
+	@JoinTable(name = "tb_produto_categoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	
-	@Transient
 	private Set<Categoria> categorias = new HashSet<>();
-	
+
 	public Produto() {
-		
+
 	}
 
 	public Produto(Integer id, String nome, String descricao, Double preco, String imgUrl) {
@@ -101,7 +105,5 @@ public class Produto implements Serializable {
 		Produto other = (Produto) obj;
 		return Objects.equals(id, other.id);
 	}
-
-	
 
 }

@@ -50,6 +50,15 @@ public class ConfiguracaoDeTeste implements CommandLineRunner {
 		repositorioCategoria.saveAll(Arrays.asList(c1, c2, c3));
 		repositorioProduto.saveAll(Arrays.asList(P1, P2, P3, P4, P5));
 		
+		P1.getCategorias().add(c2);
+		P2.getCategorias().add(c1);
+		P2.getCategorias().add(c3);
+		P3.getCategorias().add(c3);
+		P4.getCategorias().add(c3);
+		P5.getCategorias().add(c2);
+		
+		repositorioProduto.saveAll(Arrays.asList(P1, P2, P3, P4, P5));
+		
 		Usuario u1 = new Usuario(null, "Joao Neto", "joaoneto@gmail.com", "999999999", "123456");
 		Usuario u2 = new Usuario(null, "Joao Victor", "joaovictor@gmail.com", "888888888", "654321");
 		
