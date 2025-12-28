@@ -26,5 +26,10 @@ public class ServicoUsuario {
 		
 		return obj.get();
 	}
+	
+	public Usuario inserir(Usuario obj) {
+		
+		return repositorio.save(obj);
+	}
 
 }
