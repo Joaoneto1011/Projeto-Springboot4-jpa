@@ -31,5 +31,10 @@ public class ServicoUsuario {
 		
 		return repositorio.save(obj);
 	}
+	
+	public void deletar(Long id) {
+		
+		repositorio.deleteById(id);
+	}
 
 }
