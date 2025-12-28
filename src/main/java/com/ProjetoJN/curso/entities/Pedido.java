@@ -109,6 +109,18 @@ public class Pedido implements Serializable {
 		
 		return items;
 	}
+	
+	public Double getTotal() {
+		
+		double soma = 0.0;
+		
+		for (ItemDoPedido x : items) {
+			
+			soma += x.getSubTotal();
+		}
+		
+		return soma;
+	}
 
 	@Override
 	public int hashCode() {

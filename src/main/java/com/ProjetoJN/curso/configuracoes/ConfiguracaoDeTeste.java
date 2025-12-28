@@ -68,21 +68,21 @@ public class ConfiguracaoDeTeste implements CommandLineRunner {
 		Usuario u1 = new Usuario(null, "Joao Neto", "joaoneto@gmail.com", "999999999", "123456");
 		Usuario u2 = new Usuario(null, "Joao Victor", "joaovictor@gmail.com", "888888888", "654321");
 		
-		Pedido p1 = new Pedido(null, Instant.parse("2025-12-22T15:40:30Z"), StatusPedido.AGUARDANDO_PAGAMENTO, u1);
-		Pedido p2 = new Pedido(null, Instant.parse("2025-11-21T16:30:20Z"), StatusPedido.PAGO, u2);
-		Pedido p3 = new Pedido(null, Instant.parse("2025-10-20T18:20:10Z"), StatusPedido.PAGO, u2);
+		Pedido p1 = new Pedido(null, Instant.parse("2025-12-22T15:40:30Z"), StatusPedido.PAGO, u1);
+		Pedido p2 = new Pedido(null, Instant.parse("2025-11-21T16:30:20Z"), StatusPedido.AGUARDANDO_PAGAMENTO, u2);
+		Pedido p3 = new Pedido(null, Instant.parse("2025-10-20T18:20:10Z"), StatusPedido.AGUARDANDO_PAGAMENTO, u2);
 		
 		repositorioUsuario.saveAll(Arrays.asList(u1, u2));
 		repositorioPedido.saveAll(Arrays.asList(p1, p2, p3));
 		
 		ItemDoPedido item1 = new ItemDoPedido(p1, P1, 2, P1.getPreco());
-		ItemDoPedido item2 = new ItemDoPedido(p1, P3, 1, P4.getPreco());
-		ItemDoPedido item3 = new ItemDoPedido(p2, P3, 2, P1.getPreco());
+		ItemDoPedido item2 = new ItemDoPedido(p1, P3, 1, P3.getPreco());
+		ItemDoPedido item3 = new ItemDoPedido(p2, P3, 2, P2.getPreco());
 		ItemDoPedido item4 = new ItemDoPedido(p3, P5, 2, P5.getPreco());
 		
 		repositorioItemDoPedido.saveAll(Arrays.asList(item1, item2, item3, item4));
 		
-		Pagamento pag1 = new Pagamento(null, Instant.parse("2025-11-21T18:30:20Z"), p2);
+		Pagamento pag1 = new Pagamento(null, Instant.parse("2025-11-21T18:30:20Z"), p1);
 		p1.setPagamento(pag1);
 		
 		repositorioPedido.save(p1);
