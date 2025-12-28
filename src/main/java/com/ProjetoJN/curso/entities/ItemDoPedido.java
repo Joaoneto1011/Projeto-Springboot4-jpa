@@ -18,6 +18,7 @@ public class ItemDoPedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@JsonIgnore
 	@EmbeddedId
 	private ItemDoPedidoPK id = new ItemDoPedidoPK();
 	
