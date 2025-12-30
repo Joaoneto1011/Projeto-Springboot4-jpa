@@ -12,6 +12,8 @@ import com.ProjetoJN.curso.repositorios.RepositorioUsuario;
 import com.ProjetoJN.curso.servicos.exception.ExcecaoDeBancoDeDados;
 import com.ProjetoJN.curso.servicos.exception.RecursoNaoEncontradoException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class ServicoUsuario {
 
@@ -51,9 +53,13 @@ public class ServicoUsuario {
 
 	public Usuario atualizar(Long id, Usuario obj) {
 
+		try {
 		Usuario entidade = repositorio.getReferenceById(id);
 		atualizarDados(entidade, obj);
 		return repositorio.save(entidade);
+		} catch (EntityNotFoundException e) {
+			throw new RecursoNaoEncontradoException(id);
+		}
 	}
 
 	private void atualizarDados(Usuario entidade, Usuario obj) {
