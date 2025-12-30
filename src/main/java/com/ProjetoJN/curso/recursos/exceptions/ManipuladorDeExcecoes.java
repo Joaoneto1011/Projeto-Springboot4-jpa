@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.ProjetoJN.curso.servicos.exception.ExcecaoDeBancoDeDados;
 import com.ProjetoJN.curso.servicos.exception.RecursoNaoEncontradoException;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,4 +23,15 @@ public class ManipuladorDeExcecoes {
 		ErroPadrao erroPadrao = new ErroPadrao(Instant.now(), status.value(), erro, e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(erroPadrao);
 	}
+	
+	@ExceptionHandler(ExcecaoDeBancoDeDados.class)
+	public ResponseEntity<ErroPadrao> bancoDeDados(ExcecaoDeBancoDeDados e, HttpServletRequest request) {
+		
+		String erro = "Erro no Banco de Dados";
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		ErroPadrao erroPadrao = new ErroPadrao(Instant.now(), status.value(), erro, e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(status).body(erroPadrao);
+	}
+	
+	
 }
