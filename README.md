@@ -26,13 +26,13 @@ Tudo isso seguindo uma **arquitetura em camadas**, facilitando manutenção, esc
 O projeto foi organizado seguindo o padrão **Controller → Service → Repository**, amplamente utilizado em aplicações profissionais com Spring Boot.
 
 com.ProjetoJN.curso
-│
+
 ├── entities → Entidades JPA
 
 ├── entities.enums → Enumerações do domínio
 
 ├── entities.pk → Chaves primárias compostas
-│
+
 ├── repositorios → Interfaces JpaRepository
 
 ├── servicos → Regras de negócio
@@ -40,7 +40,7 @@ com.ProjetoJN.curso
 ├── recursos → Controllers REST
 
 ├── recursos.exceptions → Tratamento global de erros
-│
+
 └── CursoApplication → Classe principal
 
 
