@@ -163,6 +163,9 @@ Este projeto foi desenvolvido com foco em:
 👨‍💻 Autor
 
 João Neto
+
 🎓 Estudante de Sistemas de Informação
+
 🚀 Em constante evolução e busca por oportunidades
+
 linkedin: https://www.linkedin.com/in/joao-rodrigues-neto-855757293/
