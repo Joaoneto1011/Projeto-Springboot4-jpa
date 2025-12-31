@@ -28,12 +28,17 @@ O projeto foi organizado seguindo o padrão **Controller → Service → Reposit
 com.ProjetoJN.curso
 │
 ├── entities → Entidades JPA
+
 ├── entities.enums → Enumerações do domínio
+
 ├── entities.pk → Chaves primárias compostas
 │
 ├── repositorios → Interfaces JpaRepository
+
 ├── servicos → Regras de negócio
+
 ├── recursos → Controllers REST
+
 ├── recursos.exceptions → Tratamento global de erros
 │
 └── CursoApplication → Classe principal
